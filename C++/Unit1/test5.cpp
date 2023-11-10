@@ -32,62 +32,43 @@ Output 1 :
 93.50
 
 
-#include <iostream>
-
+#include<iostream>
 using namespace std;
 
 class Money {
     public:
     int rupee;
     int paisa;
-    
-    Money() {
-        rupee = 0;
-        paisa = 0;
-    }
-    
-    Money(int r, int p) {
-        rupee = r;
-        paisa = p;
-    }
-    
-    int getRupee() {
-        return rupee;
-    }
-    
     void setRupee(int r) {
         rupee = r;
     }
-    
-    int getPaise() {
-        return paisa;
-    }
-    
-    void setPaise(int p) {
+    void setPaisa(int p) {
         paisa = p;
     }
-    
-    Money add(Money m) {
-        Money sum;
-        sum.rupee = rupee + m.rupee;
-        sum.paisa = paisa + m.paisa;
-        
-        if (sum.paisa >= 100) {
-            sum.rupee++;
-            sum.paisa -= 100;
-        }
-        
-        return sum;
+    int getRupee() {
+        return rupee;
+    }
+    int getPaisa() {
+        return paisa;
     }
 };
-
 int main() {
-    Money m1(50, 85);
-    Money m2(42, 65);
-    
-    Money sum = m1.add(m2);
-    
-    cout << sum.rupee << "."<<sum.paisa << endl;
-    
-     return 0;
+        Money m[2];
+        int i,t;
+        for(i=0;i<2;i++) {
+            Money a;
+            m[i]=a;
+            cin>>t;
+            m[i].setRupee(t);
+            cin>>t;
+            m[i].setPaisa(t);
+        }
+        int r,p;
+        r = m[0].getRupee()+m[1].getRupee();
+        p = m[0].getPaisa()+m[1].getPaisa();
+        if(p>99) {
+            r +=1;
+            p = p-100;
+        }
+        cout<<r<<"."<<p;
 }
